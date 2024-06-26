@@ -24,7 +24,7 @@ export const CountComponent = () => {
         <View>
             <Text>{count}</Text>
             <TouchableOpacity style={{ backgroundColor: "#aaf", padding: 20 }} onPress={inc}>
-                <Text>+1</Text>
+                <Text>+3</Text>
             </TouchableOpacity>
         </View>
     )
