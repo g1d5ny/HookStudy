@@ -98,8 +98,13 @@ export const LateInit = () => {
     console.log("init: ", init)
 
     console.log("111varr: " + varr)
-    let varr
+    let varr = 1
     console.log("222varr: " + varr)
+    if (true) {
+        var abc = 2
+        console.log(abc)
+    }
+    console.log("ab", abc)
 
     // 1. 요기에 init이 있으면 count의 초기값은 undefined임
     // 이유: init은 함수를 변수 init에 할당한 함수 표현식이자 변수임. js에서 함수 표현식은 호이스팅의 영향을 받음
