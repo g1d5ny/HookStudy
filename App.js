@@ -16,6 +16,8 @@ import { App7, App8 } from "./src/chapter03/07_factory-pattern-with-custom-hook"
 import { App4_1 } from "./src/chapter04/01_use_store_with_subscription"
 import { App4_2 } from "./src/chapter04/02_use_store_with_selector"
 import { App4_3 } from "./src/chapter04/03_use_subscription_with_store"
+import { App5_1, App5_1_2 } from "./src/chapter05/01_theme_context"
+import { App5_2 } from "./src/chapter05/02_context_subscription"
 
 export default function App() {
     // 싱글턴이 아닌 전역 상태가 어떻게 작동하는지
@@ -30,10 +32,14 @@ export default function App() {
     return (
         <ScrollView>
             <View style={styles.container}>
+                {/* chapter05 */}
+                <App5_1 />
+                <App5_1_2 />
+                <App5_2 />
                 {/* chapter04 */}
-                <App4_1 />
+                {/* <App4_1 />
                 <App4_2 />
-                <App4_3 />
+                <App4_3 /> */}
                 {/* chapter03 */}
                 {/* <UseContextBasicComponent />
                 <UseContextWithUseStateComponent />
