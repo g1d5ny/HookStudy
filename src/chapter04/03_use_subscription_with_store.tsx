@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react"
+import { useCallback, useMemo, useSyncExternalStore } from "react"
 import { useSubscription } from "use-subscription"
 import { Text, TouchableOpacity } from "react-native"
 
@@ -28,14 +28,18 @@ const createStore = <T extends unknown>(initialState: T): Store<T> => {
 const store = createStore({ count1: 0, count2: 0 })
 
 const useStoreSelector = <T, S>(store: Store<T>, selector: (state: T) => S) =>
-    useSubscription(
-        useMemo(
-            () => ({
-                getCurrentValue: () => selector(store.getState()), // () => store.getState().count1
-                subscribe: store.subscribe
-            }),
-            [store, selector]
-        )
+    // useSubscription(
+    //     useMemo(
+    //         () => ({
+    //             getCurrentValue: () => selector(store.getState()), // () => store.getState().count1
+    //             subscribe: store.subscribe
+    //         }),
+    //         [store, selector]
+    //     )
+    // )
+    useSyncExternalStore(
+        store.subscribe,
+        () => selector(store.getState()) // () => store.getState().count1
     )
 
 const Component1 = () => {
@@ -77,7 +81,7 @@ const Component2 = () => {
     }
     return (
         <Text>
-            count2: {state}
+            ㅋㅋcount2: {state}
             <TouchableOpacity onPress={inc}>
                 <Text>+1</Text>
             </TouchableOpacity>

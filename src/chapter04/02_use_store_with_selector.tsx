@@ -40,8 +40,6 @@ const useStoreSelector = <T, S>(store: Store<T>, selector: (state: T) => S) => {
         // 1. const unsubscribe = store.subscribe(() => {
         //      setState(0)
         //    })
-        console.log("구독!!>_< " + selector(store.getState()))
-
         // 2. createStore 내 callbacks의 Set에 () => {setState(0)}를 추가
         setState(selector(store.getState())) // setState(0)
         return unsubscribe // createStore 내 callbacks에 있는 () => {setState(selector(store.getState()))} 지움

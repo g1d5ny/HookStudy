@@ -20,6 +20,7 @@ const createStore = <T extends unknown>(initialState: T): Store<T> => {
 
     const subscribe = (callback: () => void) => {
         callbacks.add(callback)
+        console.log("callback: ", callback)
         return () => {
             callbacks.delete(callback)
         }
@@ -30,7 +31,8 @@ const createStore = <T extends unknown>(initialState: T): Store<T> => {
 const store = createStore({ count: 0 })
 
 const useStore = <T extends unknown>(store: Store<T>) => {
-    const [state, setState] = useState(store.getState())
+    const [state, setState] = useState(store.getState()) // useState({ count: 0 })
+    console.log("store.getState(): ", store.getState())
 
     useEffect(() => {
         // store가 이미 새로운 상태를 가지고 있을 가능성이 있기 때문에 한번 호출
@@ -38,6 +40,7 @@ const useStore = <T extends unknown>(store: Store<T>) => {
             setState(store.getState())
         })
         setState(store.getState())
+        console.log("333 store: ", store)
         return unsubscribe
     }, [store])
 
