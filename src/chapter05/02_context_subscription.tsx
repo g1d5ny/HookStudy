@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useRef, useMemo } from "react"
+import { ReactNode, createContext, useContext, useRef, useMemo, useSyncExternalStore } from "react"
 import { View, Text, TouchableOpacity } from "react-native"
 import { useSubscription } from "use-subscription"
 
@@ -40,15 +40,19 @@ const StoreProvider = ({ initialState, children }: { initialState: State; childr
 const useSelector = <S extends unknown>(selector: (state: State) => S) => {
     const store = useContext(StoreContext)
     // useSyncExternalStore 수정 ㄱ
-    return useSubscription(
-        useMemo(
-            () => ({
-                getCurrentValue: () => selector(store.getState()),
-                subscribe: store.subscribe
-            }),
-            [store, selector]
-        )
+    return useSyncExternalStore(
+        store.subscribe,
+        () => selector(store.getState()) // () => store.getState().count1
     )
+    // return useSubscription(
+    //     useMemo(
+    //         () => ({
+    //             getCurrentValue: () => selector(store.getState()),
+    //             subscribe: store.subscribe
+    //         }),
+    //         [store, selector]
+    //     )
+    // )
 }
 
 const useSetState = () => {
