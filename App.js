@@ -18,6 +18,10 @@ import { App4_2 } from "./src/chapter04/02_use_store_with_selector"
 import { App4_3 } from "./src/chapter04/03_use_subscription_with_store"
 import { App5_1, App5_1_2 } from "./src/chapter05/01_theme_context"
 import { App5_2 } from "./src/chapter05/02_context_subscription"
+import { App7_1, App7_2 } from "./src/chapter07/01_store"
+import { App7_3, App7_4 } from "./src/chapter07/02_useStore"
+import { App7_5 } from "./src/chapter07/03_store_update"
+import { Todo } from "./src/chapter07/04_todo"
 
 export default function App() {
     // 싱글턴이 아닌 전역 상태가 어떻게 작동하는지
@@ -32,10 +36,16 @@ export default function App() {
     return (
         <ScrollView>
             <View style={styles.container}>
+                <App7_1 />
+                <App7_2 />
+                <App7_3 />
+                <App7_4 />
+                <App7_5 />
+                <Todo />
                 {/* chapter05 */}
-                <App5_1 />
+                {/* <App5_1 />
                 <App5_1_2 />
-                <App5_2 />
+                <App5_2 /> */}
                 {/* chapter04 */}
                 {/* <App4_1 />
                 <App4_2 />
