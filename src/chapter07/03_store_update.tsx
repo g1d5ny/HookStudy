@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { Text, TouchableOpacity, View } from "react-native"
 import { create } from "zustand"
 
@@ -40,9 +41,15 @@ export const App7_5 = () => {
     const increase1 = useStore(inc1)
     const increase2 = useStore(inc2)
 
+    useEffect(() => {
+        useStore.subscribe(e => {
+            console.log("store state is changed!!: " + count1, JSON.stringify(e))
+        })
+    }, [])
+
     useStore.subscribe(e => {
         // wow??... count1 클릭한 횟수만큼 들어옴
-        console.log("store state is changed!!: " + JSON.stringify(e))
+        console.log("store state is changed!!: " + count1, JSON.stringify(e))
     })
 
     return (

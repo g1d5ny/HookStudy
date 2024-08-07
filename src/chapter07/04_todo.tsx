@@ -63,6 +63,12 @@ const selectAddTodo = (state: StoreState) => state.addTodo
 
 const TodoList = () => {
     const todos = useStore(selectTodos)
+
+    useStore.subscribe(e => {
+        // wow??... count1 클릭한 횟수만큼 들어옴
+        console.log("222222 store state is changed!!: " + JSON.stringify(e))
+    })
+
     return (
         <View>
             {todos.map(todo => (
@@ -91,6 +97,10 @@ const NewTodo = () => {
 }
 
 export const Todo = () => {
+    useStore.subscribe(e => {
+        console.log("store state is changed!!: " + JSON.stringify(e))
+    })
+
     return (
         <>
             <TodoList />
