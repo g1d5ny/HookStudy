@@ -22,6 +22,8 @@ import { App7_1, App7_2 } from "./src/chapter07/01_store"
 import { App7_3, App7_4 } from "./src/chapter07/02_useStore"
 import { App7_5 } from "./src/chapter07/03_store_update"
 import { Todo } from "./src/chapter07/04_todo"
+import { App8_1 } from "./src/chapter08/01_atom"
+import { App8_2, App8_3, PersonComponent, PersonComponent2 } from "./src/chapter08/02_re_rendering"
 
 export default function App() {
     // 싱글턴이 아닌 전역 상태가 어떻게 작동하는지
@@ -36,12 +38,19 @@ export default function App() {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <App7_1 />
+                {/* chapter08 */}
+                <App8_1 />
+                <PersonComponent />
+                <PersonComponent2 />
+                <App8_2 />
+                <App8_3 />
+                {/* chapter07 */}
+                {/* <App7_1 />
                 <App7_2 />
                 <App7_3 />
                 <App7_4 />
                 <App7_5 />
-                <Todo />
+                <Todo /> */}
                 {/* chapter05 */}
                 {/* <App5_1 />
                 <App5_1_2 />
