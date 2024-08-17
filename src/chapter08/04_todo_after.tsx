@@ -14,9 +14,21 @@ interface IProps {
 
 const TodoItem = ({ todoAtom, remove }: IProps) => {
     const [todo, setTodo] = useAtom(todoAtom) // toggleTodo 대신 useAtom으로 todoAtom 값 구독함, todoAtom은 객체이며, id값 리턴함
+
+    // todoAtom은 id값 리턴함 (아톰 구성은 문자열로 평가될때 uid 반환)
+    todoAtom.onMount = () => {
+        console.log("todoAtom 사용을 시작합니다.")
+
+        const onUnmount = () => {
+            console.log("todoAtom 사용이 끝났습니다.")
+        }
+        return onUnmount
+    }
+
     return (
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Checkbox value={todo.done} onValueChange={() => setTodo(prev => ({ ...prev, done: !prev.done }))} /> {/* useAtom 덕에 setTodo 간단해짐 */}
+            {/* useAtom 덕에 setTodo 간단해짐 */}
+            <Checkbox value={todo.done} onValueChange={() => setTodo(prev => ({ ...prev, done: !prev.done }))} />
             <Text style={{ textDecorationLine: todo.done ? "line-through" : "none" }}>{todo.title}</Text>
             <TouchableOpacity style={{ backgroundColor: "#aaf" }} onPress={() => remove(todoAtom)}>
                 <Text>Delete</Text>
@@ -34,10 +46,10 @@ const TodoList = () => {
 
     return (
         <>
-            {todoAtoms.map(todoAtom => (
+            {todoAtoms.map(todoAtom => {
                 // todoAtom은 id값 리턴함 (아톰 구성은 문자열로 평가될때 uid 반환)
-                <MemoedTodoItem key={`${todoAtom}`} todoAtom={todoAtom} remove={remove} />
-            ))}
+                return <MemoedTodoItem key={`${todoAtom}`} todoAtom={todoAtom} remove={remove} />
+            })}
         </>
     )
 }

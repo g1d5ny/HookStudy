@@ -30,11 +30,11 @@ export const ActionAtom = () => {
     const [count] = useAtom(countAtom)
     const [_, incrementCount] = useAtom<any>(incrementCountAtom)
 
-    countAtom.onMount = () => {
-        console.log("count atom 사용을 시작합니다.")
+    incrementCountAtom.onMount = () => {
+        console.log("incrementCountAtom 사용을 시작합니다.")
 
         const onUnmount = () => {
-            console.log("count atom 사용이 끝났습니다.")
+            console.log("incrementCountAtom 사용이 끝났습니다.")
         }
         return onUnmount
     }

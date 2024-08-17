@@ -29,6 +29,10 @@ import { App8_3 } from "./src/chapter08/03_provider"
 import { App8_4_after } from "./src/chapter08/04_todo_after"
 import { App8_4 } from "./src/chapter08/04_todo_before"
 import { ActionAtom, Writer } from "./src/chapter08/05_etc"
+import { proxyObject } from "./src/chapter09/01_valtio"
+import { proxy, snapshot } from "valtio"
+import { Counter1, Counter2 } from "./src/chapter09/02_use_snapshot"
+import { App9_1 } from "./src/chapter09/03_todo"
 
 export default function App() {
     // 싱글턴이 아닌 전역 상태가 어떻게 작동하는지
@@ -40,12 +44,33 @@ export default function App() {
     // console.log(container1.addBase(2)) // shows "12"
     // console.log(container2.addBase(2)) // shows "3"
 
+    console.log(++proxyObject.count)
+    // start setting count
+    // end setting count
+    // 1
+
+    const state2 = proxy({
+        obj1: { c: 0 },
+        obj2: { c: 0 }
+    })
+
+    const snap12 = snapshot(state2)
+    ++state2.obj1.c
+    const snap22 = snapshot(state2)
+    --state2.obj1.c
+
+    console.log("snap test: ", snap12.obj1.c, snap22.obj1.c)
     return (
         <ScrollView>
             <View style={styles.container}>
+                {/* chaptoer09 */}
+                <Counter1 />
+                <Counter2 />
+                <Text style={{ paddingVertical: 10 }}>=== App9_1 ===</Text>
+                <App9_1 />
                 {/* chapter08 */}
                 {/* <App8_1 /> */}
-                <PersonComponent />
+                {/* <PersonComponent />
                 <Text style={{ paddingVertical: 10 }}>=== PersonComponent2 ===</Text>
                 <PersonComponent2 />
                 <Text style={{ paddingVertical: 10 }}>=== PersonComponent3 ===</Text>
@@ -61,7 +86,7 @@ export default function App() {
                 <Text style={{ paddingVertical: 10 }}>=== Writer ===</Text>
                 <Writer />
                 <Text style={{ paddingVertical: 10 }}>=== ActionAtom ===</Text>
-                <ActionAtom />
+                <ActionAtom /> */}
                 {/* chapter07 */}
                 {/* <App7_1 />
                 <App7_2 />

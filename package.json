@@ -18,6 +18,7 @@
     "react-native": "0.74.2",
     "typescript": "~5.3.3",
     "use-subscription": "^1.8.2",
+    "valtio": "^1.13.2",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
