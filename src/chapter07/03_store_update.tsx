@@ -43,19 +43,26 @@ export const App7_5 = () => {
 
     useEffect(() => {
         useStore.subscribe(e => {
-            console.log("store state is changed!!: " + count1, JSON.stringify(e))
+            console.log("store state is changed!!: " + count1 + JSON.stringify(e))
         })
     }, [])
 
-    useStore.subscribe(e => {
-        // wow??... count1 클릭한 횟수만큼 들어옴
-        console.log("store state is changed!!: " + count1, JSON.stringify(e))
-    })
+    // useStore.subscribe(e => {
+    //     // wow??... count1 클릭한 횟수만큼 들어옴
+    //     console.log("store state is changed!!: " + count1, JSON.stringify(e))
+    // })
 
     return (
         <View>
             <Text>count1: {count1}</Text>
-            <TouchableOpacity onPress={increase1} style={{ padding: 4, backgroundColor: "#faf" }}>
+            <TouchableOpacity
+                onPress={() =>
+                    useStore.setState((prev: StoreState) => ({
+                        count1: prev.count1 + 1
+                    }))
+                }
+                style={{ padding: 4, backgroundColor: "#faf" }}
+            >
                 <Text>count1 +1</Text>
             </TouchableOpacity>
             <Text>count2: {count2}</Text>
@@ -63,6 +70,29 @@ export const App7_5 = () => {
                 <Text>count2 +1</Text>
             </TouchableOpacity>
             <Text>total:{total}</Text>
+        </View>
+    )
+}
+
+export const App7_6 = () => {
+    const count1 = useStore(selectCount1)
+    const count2 = useStore(selectCount2)
+
+    return (
+        <View>
+            <Text>======== 7-6</Text>
+            <Text>count1: {count1}</Text>
+            <TouchableOpacity
+                onPress={() =>
+                    useStore.setState((prev: StoreState) => ({
+                        count1: prev.count1 + 1
+                    }))
+                }
+                style={{ padding: 4, backgroundColor: "#faf" }}
+            >
+                <Text>count1 +1</Text>
+            </TouchableOpacity>
+            <Text>count2: {count2}</Text>
         </View>
     )
 }

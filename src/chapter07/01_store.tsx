@@ -7,14 +7,18 @@ export const App7_1 = () => {
     console.log(store.getState())
     store.setState({ count: 1 })
     console.log(store.getState())
+
     console.log("=============")
+
     const state1 = store.getState()
     console.log("state1: ", state1)
     state1.count = 2
     console.log("state1: ", state1)
     ++state1.count
     console.log("state1: ", state1)
+
     console.log("=============")
+
     store.setState(prev => ({ count: prev.count + 1 })) // 함수 갱신
     console.log(store.getState())
     return <></>

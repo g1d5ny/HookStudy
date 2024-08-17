@@ -9,7 +9,19 @@ const CountProvider = ({ children }: { children: JSX.Element }) => {
 
 const Counter0 = () => {
     const [count, setCount] = useContext(CountContext)
+    const inc = () => setCount(c => c + 1)
+    return (
+        <>
+            <Text>useContext count: {count}</Text>
+            <TouchableOpacity onPress={inc}>
+                <Text>+1</Text>
+            </TouchableOpacity>
+        </>
+    )
+}
 
+const Counter0_1 = () => {
+    const [count, setCount] = useContext(CountContext)
     const inc = () => setCount(c => c + 1)
     return (
         <>
@@ -35,13 +47,30 @@ const Counter1 = () => {
     )
 }
 
+const Counter2 = () => {
+    const [count, setCount] = useAtom(countAtom)
+    const inc = () => setCount(c => c + 1)
+    return (
+        <>
+            <Text>useAtom count: {count}</Text>
+            <TouchableOpacity onPress={inc}>
+                <Text>+1</Text>
+            </TouchableOpacity>
+        </>
+    )
+}
+
 export const App8_1 = () => {
     return (
         <>
             <CountProvider>
-                <Counter0 />
+                <>
+                    <Counter0 />
+                    <Counter0_1 />
+                </>
             </CountProvider>
             <Counter1 />
+            <Counter2 />
         </>
     )
 }

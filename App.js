@@ -20,10 +20,15 @@ import { App5_1, App5_1_2 } from "./src/chapter05/01_theme_context"
 import { App5_2 } from "./src/chapter05/02_context_subscription"
 import { App7_1, App7_2 } from "./src/chapter07/01_store"
 import { App7_3, App7_4 } from "./src/chapter07/02_useStore"
-import { App7_5 } from "./src/chapter07/03_store_update"
+import { App7_5, App7_6 } from "./src/chapter07/03_store_update"
 import { Todo } from "./src/chapter07/04_todo"
 import { App8_1 } from "./src/chapter08/01_atom"
-import { App8_2, App8_3, PersonComponent, PersonComponent2 } from "./src/chapter08/02_re_rendering"
+import { App8_2, PersonComponent, PersonComponent2, PersonComponent3, PersonComponent4 } from "./src/chapter08/02_re_rendering"
+import { App7_7 } from "./src/chapter07/05_zustand"
+import { App8_3 } from "./src/chapter08/03_provider"
+import { App8_4_after } from "./src/chapter08/04_todo_after"
+import { App8_4 } from "./src/chapter08/04_todo_before"
+import { ActionAtom, Writer } from "./src/chapter08/05_etc"
 
 export default function App() {
     // 싱글턴이 아닌 전역 상태가 어떻게 작동하는지
@@ -39,18 +44,33 @@ export default function App() {
         <ScrollView>
             <View style={styles.container}>
                 {/* chapter08 */}
-                <App8_1 />
+                {/* <App8_1 /> */}
                 <PersonComponent />
+                <Text style={{ paddingVertical: 10 }}>=== PersonComponent2 ===</Text>
                 <PersonComponent2 />
+                <Text style={{ paddingVertical: 10 }}>=== PersonComponent3 ===</Text>
+                <PersonComponent3 />
+                <Text style={{ paddingVertical: 10 }}>=== App8_2 ===</Text>
                 <App8_2 />
+                <Text style={{ paddingVertical: 10 }}>=== App8_3 ===</Text>
                 <App8_3 />
+                <Text style={{ paddingVertical: 10 }}>=== App8_4 ===</Text>
+                <App8_4 />
+                <Text style={{ paddingVertical: 10 }}>=== App8_4_after ===</Text>
+                <App8_4_after />
+                <Text style={{ paddingVertical: 10 }}>=== Writer ===</Text>
+                <Writer />
+                <Text style={{ paddingVertical: 10 }}>=== ActionAtom ===</Text>
+                <ActionAtom />
                 {/* chapter07 */}
                 {/* <App7_1 />
                 <App7_2 />
                 <App7_3 />
-                <App7_4 />
-                <App7_5 />
-                <Todo /> */}
+                <App7_4 />*/}
+                {/* <App7_5 />
+                <App7_6 /> */}
+                {/* <App7_7 /> */}
+                {/* <Todo /> */}
                 {/* chapter05 */}
                 {/* <App5_1 />
                 <App5_1_2 />

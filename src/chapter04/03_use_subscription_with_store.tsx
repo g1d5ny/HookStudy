@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useSyncExternalStore } from "react"
+import { useCallback, useEffect, useMemo, useSyncExternalStore } from "react"
 import { useSubscription } from "use-subscription"
 import { Text, TouchableOpacity } from "react-native"
 
@@ -8,7 +8,7 @@ type Store<T> = {
     subscribe: (callback: () => void) => () => void
 }
 
-const createStore = <T extends unknown>(initialState: T): Store<T> => {
+export const createStore = <T extends unknown>(initialState: T): Store<T> => {
     let state = initialState
     const callbacks = new Set<() => void>()
     const getState = () => state
@@ -27,7 +27,7 @@ const createStore = <T extends unknown>(initialState: T): Store<T> => {
 
 const store = createStore({ count1: 0, count2: 0 })
 
-const useStoreSelector = <T, S>(store: Store<T>, selector: (state: T) => S) =>
+export const useStoreSelector = <T, S>(store: Store<T>, selector: (state: T) => S) =>
     // useSubscription(
     //     useMemo(
     //         () => ({
@@ -59,6 +59,7 @@ const Component1 = () => {
             count1: prev.count1 + 1
         }))
     }
+
     return (
         <Text>
             count1: {state}
@@ -79,6 +80,11 @@ const Component2 = () => {
             count2: prev.count2 + 1
         }))
     }
+
+    useEffect(() => {
+        console.log("count1이 바뀌어도 렌더링 안 됨")
+    })
+
     return (
         <Text>
             ㅋㅋcount2: {state}
