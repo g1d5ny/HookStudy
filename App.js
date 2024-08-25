@@ -33,6 +33,7 @@ import { proxyObject } from "./src/chapter09/01_valtio"
 import { proxy, snapshot } from "valtio"
 import { Counter1, Counter2 } from "./src/chapter09/02_use_snapshot"
 import { App9_1 } from "./src/chapter09/03_todo"
+import { App10_1 } from "./src/chapter10/01_with_useState"
 
 export default function App() {
     // 싱글턴이 아닌 전역 상태가 어떻게 작동하는지
@@ -44,30 +45,32 @@ export default function App() {
     // console.log(container1.addBase(2)) // shows "12"
     // console.log(container2.addBase(2)) // shows "3"
 
-    console.log(++proxyObject.count)
+    // console.log(++proxyObject.count)
     // start setting count
     // end setting count
     // 1
 
-    const state2 = proxy({
-        obj1: { c: 0 },
-        obj2: { c: 0 }
-    })
+    // const state2 = proxy({
+    //     obj1: { c: 0 },
+    //     obj2: { c: 0 }
+    // })
 
-    const snap12 = snapshot(state2)
-    ++state2.obj1.c
-    const snap22 = snapshot(state2)
-    --state2.obj1.c
+    // const snap12 = snapshot(state2)
+    // ++state2.obj1.c
+    // const snap22 = snapshot(state2)
+    // --state2.obj1.c
 
-    console.log("snap test: ", snap12.obj1.c, snap22.obj1.c)
+    // console.log("snap test: ", snap12.obj1.c, snap22.obj1.c)
     return (
         <ScrollView>
             <View style={styles.container}>
+                {/* chapter10 */}
+                <App10_1 />
                 {/* chaptoer09 */}
-                <Counter1 />
+                {/* <Counter1 />
                 <Counter2 />
                 <Text style={{ paddingVertical: 10 }}>=== App9_1 ===</Text>
-                <App9_1 />
+                <App9_1 /> */}
                 {/* chapter08 */}
                 {/* <App8_1 /> */}
                 {/* <PersonComponent />
