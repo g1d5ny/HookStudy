@@ -34,6 +34,8 @@ import { proxy, snapshot } from "valtio"
 import { Counter1, Counter2 } from "./src/chapter09/02_use_snapshot"
 import { App9_1 } from "./src/chapter09/03_todo"
 import { App10_1 } from "./src/chapter10/01_with_useState"
+import { App10_2 } from "./src/chapter10/02_with_useReducer"
+import { App10_3 } from "./src/chapter10/03_with_reactRedux"
 
 export default function App() {
     // 싱글턴이 아닌 전역 상태가 어떻게 작동하는지
@@ -66,6 +68,8 @@ export default function App() {
             <View style={styles.container}>
                 {/* chapter10 */}
                 <App10_1 />
+                <App10_2 />
+                <App10_3 />
                 {/* chaptoer09 */}
                 {/* <Counter1 />
                 <Counter2 />
