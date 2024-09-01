@@ -36,6 +36,9 @@ import { App9_1 } from "./src/chapter09/03_todo"
 import { App10_1 } from "./src/chapter10/01_with_useState"
 import { App10_2 } from "./src/chapter10/02_with_useReducer"
 import { App10_3 } from "./src/chapter10/03_with_reactRedux"
+import { App11, ReduxToolkitCounter } from "./src/chapter11/01_redux_with_zustand"
+import { App11_2 } from "./src/chapter11/02_jotai_with_recoil"
+import { App11_3 } from "./src/chapter11/03_mobx_with_valtio"
 
 export default function App() {
     // 싱글턴이 아닌 전역 상태가 어떻게 작동하는지
@@ -66,10 +69,14 @@ export default function App() {
     return (
         <ScrollView>
             <View style={styles.container}>
+                {/* chapter11 */}
+                <App11 />
+                <App11_2 />
+                <App11_3 />
                 {/* chapter10 */}
-                <App10_1 />
+                {/* <App10_1 />
                 <App10_2 />
-                <App10_3 />
+                <App10_3 /> */}
                 {/* chaptoer09 */}
                 {/* <Counter1 />
                 <Counter2 />

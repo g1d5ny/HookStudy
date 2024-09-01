@@ -1,5 +1,11 @@
 # 리액트 훅을 활용한 마이크로 상태 관리
 
+## 총정리
+
+[전역 상태 관리 라이브러리 소개](https://www.notion.so/6-433f36227e4543a796413ab47abc1c52?pvs=21)
+
+[Zustand, Jotai, Valtio 세 가지 전역 상태 라이브러리의 유사점과 차이점](https://www.notion.so/jiondeveloper/11-fa630a1fb3ac45b89c6bbfe4e14d7e9a?pvs=4)
+
 ## 1. 1. 리액트 훅과 마이크로 상태 관리
 
 ### 1. 객체 타입과 원시 타입의 동등 비교
